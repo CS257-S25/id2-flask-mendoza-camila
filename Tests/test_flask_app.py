@@ -1,5 +1,6 @@
 import unittest
 import app
+import json
 from flask import Flask
 
 app = Flask(__name__)
@@ -9,7 +10,7 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
         '''tests the get_activities_from_subcategory function'''
         self.app = app.test_client()
         response = self.app.get('/Personal_Care_Activities/Sleeping', follow_redirects=True)
-        self.assertEqual(["Sleeping","Sleeplessness"], str(response))
+        self.assertEqual(['Sleeping','Sleeplessness'], response)
         response2 = self.app.get('/Household_Activities/Housework', follow_redirects=True)
-        self.assertEqual(["Interior cleaning","Laundry"], str(response2))
+        self.assertEqual(["Interior cleaning","Laundry"], response)
 
