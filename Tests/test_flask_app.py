@@ -5,8 +5,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-app = app.test_client()
-
 class TestGetActivitiesFromSubCategory(unittest.TestCase):
     def set_up(self):
         '''sets up the test client'''
