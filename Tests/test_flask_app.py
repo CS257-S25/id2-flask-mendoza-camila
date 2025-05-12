@@ -5,12 +5,17 @@ from flask import Flask
 
 app = Flask(__name__)
 
+app = app.test_client()
+
 class TestGetActivitiesFromSubCategory(unittest.TestCase):
+    def set_up(self):
+        '''sets up the test client'''
+        self.app = app.test_client()
+
     def test_get_activities_from_subcategory(self):
         '''tests the get_activities_from_subcategory function'''
-        app = app.test_client()
-        response = app.get('/Personal_Care_Activities/Sleeping', follow_redirects=True)
+        response = self.app.get('/Personal_Care_Activities/Sleeping', follow_redirects=True)
         self.assertEqual(['Sleeping','Sleeplessness'], response)
-        response2 = app.get('/Household_Activities/Housework', follow_redirects=True)
+        response2 = self.app.get('/Household_Activities/Housework', follow_redirects=True)
         self.assertEqual(["Interior cleaning","Laundry"], response)
 
