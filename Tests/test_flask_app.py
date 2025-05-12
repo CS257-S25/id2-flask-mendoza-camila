@@ -9,6 +9,7 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
     def set_up(self):
         '''sets up the test client'''
         self.client = app.test_client()
+        self.client.testing = True
 
     def test_get_activities_from_subcategory(self):
         '''tests the get_activities_from_subcategory function'''
