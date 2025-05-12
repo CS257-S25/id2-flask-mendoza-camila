@@ -8,7 +8,7 @@ app = Flask(__name__)
 class TestGetActivitiesFromSubCategory(unittest.TestCase):
     def set_up(self):
         '''sets up the test client'''
-        self.app = app.test_client()
+        self.app = app.app.test_client()
 
     def test_get_activities_from_subcategory(self):
         '''tests the get_activities_from_subcategory function'''
