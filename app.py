@@ -1,6 +1,6 @@
 '''creates an application that allows the user to get a list of activities'''
-from flask import Flask
 import csv
+from flask import Flask
 from ProductionCode.helper import get_subcategory_from_data
 
 app = Flask(__name__)
@@ -31,7 +31,8 @@ def get_activities_from_subcategory(category, subcategory):
     Returns: a list of activities in the subcategory'''
     data = load_activities_data()
     subcategory = get_subcategory_from_data(subcategory)
-    category = category
+    category2 = category
+    print(category2)
 
     subcategory_id = subcategory
     if subcategory_id is None:
@@ -49,7 +50,8 @@ def get_activities_from_subcategory(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''Purpose: handles the 404 error'''
-    return "Page not found. Please check the URL."
+    error = "Page not found. Please check the URL."
+    return str(e) + error
 
 @app.errorhandler(500)
 def python_bug(e):
