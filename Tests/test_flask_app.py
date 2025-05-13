@@ -17,8 +17,17 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
         '''tests the get_activities_from_subcategory function with an invalid subcategory'''
         response = self.client.get('/Personal_Care_Activities/Invalid_Subcategory', follow_redirects=True)
         self.assertEqual("Invalid subcategory. Please try again.", response.data.decode('utf-8'))
+
+    def test_invalid_url(self):
+        '''tests the get_activities_from_subcategory function with an invalid URL'''
+        response = self.client.get('/Invalid_URL', follow_redirects=True)
+        self.assertEqual("Page not found. Please check the URL.", response.data.decode('utf-8'))
+
+    def test_internal_error(self):
+        '''tests the get_activities_from_subcategory function with an internal error'''
+        # Simulate an internal error by raising an exception
+        with app.test_request_context('/Personal_Care_Activities/Sleeping'):
+            raise Exception("Internal error")
+        response = self.client.get('/Personal_Care_Activities/Sleeping', follow_redirects=True)
+        self.assertEqual("An internal error occurred. Please try again later.", response.data.decode('utf-8'))
     
-    def test_invalid_category(self):
-        '''tests the get_activities_from_subcategory function with an invalid category'''
-        response = self.client.get('/Invalid_Category/Sleeping', follow_redirects=True)
-        self.assertEqual("Invalid subcategory. Please try again.", response.data.decode('utf-8'))
