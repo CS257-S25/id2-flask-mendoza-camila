@@ -21,4 +21,6 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
     def test_invalid_url(self):
         '''tests the get_activities_from_subcategory function with an invalid URL'''
         response = self.client.get('/Invalid_URL', follow_redirects=True)
-        self.assertEqual("Page not found. Please check the URL.", response.data.decode('utf-8'))
+        self.assertEqual("404 Not Found: The requested URL was not found on the server. "\
+                         "If you entered the URL manually please check your spelling and try again.", 
+                         response.data.decode('utf-8'))

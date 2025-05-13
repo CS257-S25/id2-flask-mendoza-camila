@@ -50,8 +50,7 @@ def get_activities_from_subcategory(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''Purpose: handles the 404 error'''
-    error = "Page not found. Please check the URL."
-    return str(e) + error
+    return str(e)
 
 @app.errorhandler(500)
 def python_bug(e):
