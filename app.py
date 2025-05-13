@@ -40,7 +40,7 @@ def get_activities_from_subcategory(category, subcategory):
     # the array will store the activities belonging to the subcategory
     activities = []
     for row in data:
-        # checks to see if the first five numbers (including the 'T') of 
+        # checks to see if the first five numbers (including the 'T') of
         # the current row's ID, match the ID of the subcategory
         if row[0][:5] == subcategory_id:
             # if it does, the activity is added to the array
@@ -55,7 +55,7 @@ def page_not_found(e):
 @app.errorhandler(500)
 def python_bug(e):
     '''Purpose: handles the 500 error'''
-    return "An internal error occurred. Please try again later."
+    return str(e)
 
 if __name__ == '__main__':
     app.run()

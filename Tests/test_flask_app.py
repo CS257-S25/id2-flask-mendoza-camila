@@ -1,6 +1,5 @@
 '''tests the functions in app.py'''
 import unittest
-from flask import Flask
 from app import app
 
 class TestGetActivitiesFromSubCategory(unittest.TestCase):
@@ -17,7 +16,7 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
 
     def test_invalid_subcategory(self):
         '''tests the get_activities_from_subcategory function with an invalid subcategory'''
-        response = self.client.get('/Personal_Care_Activities/Invalid_Subcategory', 
+        response = self.client.get('/Personal_Care_Activities/Invalid_Subcategory',
                                    follow_redirects=True)
         self.assertEqual("Invalid subcategory. Please try again.", response.data.decode('utf-8'))
 
