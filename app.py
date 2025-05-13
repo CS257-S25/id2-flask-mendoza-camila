@@ -1,5 +1,6 @@
 from flask import Flask
 import csv
+import json
 from ProductionCode.helper import get_subcategory_from_data
 
 app = Flask(__name__)
@@ -39,7 +40,8 @@ def get_activities_from_subcategory(category, subcategory):
         if (row[0][:5] == subcategory_ID):
             # if it does, the activity is added to the array
             activities.append(row[1])
-    return activities
+    print(activities)
+    return json(activities)
 
 
 @app.errorhandler(404)
