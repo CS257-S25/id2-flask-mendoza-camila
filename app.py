@@ -49,12 +49,12 @@ def get_activities_from_subcategory(category, subcategory):
 @app.errorhandler(404)
 def page_not_found(e):
     '''Purpose: handles the 404 error'''
-    return e+ "Page not found. Please check the URL."
+    return "Page not found. Please check the URL."
 
 @app.errorhandler(500)
 def python_bug(e):
     '''Purpose: handles the 500 error'''
-    return e+ "An internal error occurred. Please try again later."
+    return "An internal error occurred. Please try again later."
 
 if __name__ == '__main__':
     app.run()
