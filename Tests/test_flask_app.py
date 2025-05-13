@@ -9,7 +9,7 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
     def test_get_activities_from_subcategory(self):
         '''tests the get_activities_from_subcategory function'''
         response = self.client.get('/Personal_Care_Activities/Sleeping', follow_redirects=True)
-        self.assertEqual(['Sleeping','Sleeplessness'], response.data)
+        self.assertEqual([b"Sleeping","Sleeplessness"], response.data)
         # response2 = self.client.get('/Household_Activities/Housework', follow_redirects=True)
         # self.assertEqual(["Interior cleaning","Laundry"], json.loads(response.data))
 
