@@ -6,8 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    return "To see the list of activities, please add to the end of this URL the /category/subcategory." \
-    " For example: /Personal_Care_Activities/Sleeping OR /Household_Activities/Housework"
+    return "To see the list of activities, please add to the end of this URL "\
+        "the /category/subcategory.For example: /Personal_Care_Activities/Sleeping "\
+            "OR /Household_Activities/Housework"
 
 def load_activities_data():
     '''Purpose: loads the data for the activities file
