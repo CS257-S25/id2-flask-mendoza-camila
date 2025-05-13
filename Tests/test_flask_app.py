@@ -13,3 +13,8 @@ class TestGetActivitiesFromSubCategory(unittest.TestCase):
         response2 = self.client.get('/Household_Activities/Housework', follow_redirects=True)
         self.assertEqual("Interior cleaning\nLaundry", response2.data.decode('utf-8'))
 
+    def test_invalid_subcategory(self):
+        '''tests the get_activities_from_subcategory function with an invalid subcategory'''
+        response = self.client.get('/Personal_Care_Activities/Invalid_Subcategory', follow_redirects=True)
+        self.assertEqual("Invalid subcategory. Please try again.", response.data.decode('utf-8'))
+
