@@ -39,7 +39,6 @@ def get_activities_from_subcategory(category, subcategory):
         if (row[0][:5] == subcategory_ID):
             # if it does, the activity is added to the array
             activities.append(row[1])
-    print(activities)
     return activities
 
 
